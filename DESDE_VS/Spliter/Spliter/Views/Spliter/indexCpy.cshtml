@@ -1,0 +1,45 @@
+@{
+    ViewData["Title"] = "Spliter";
+}
+
+<div class="contenedorPadre">
+
+
+    <div class="contenedor1">
+        <div>
+            <div class="form-floating">
+                <textarea class="form-control" placeholder="Coloca acá tu texto" id="floatingTextarea">@ViewData["cadena"]</textarea>
+                <label for="floatingTextarea">Coloca tu texto acá</label>
+            </div>
+        </div>
+    </div>
+
+    @* form para envio de data *@
+    <form asp-action="POST">
+        <div class="dropdown contenedor2">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Seleccione una opcion
+        </button>
+        <ul class="dropdown-menu">
+            <li><button class="dropdown-item" type="submit" asp-action="index">Eliminar espacios en blanco extra.</button></li>
+            <li><button class="dropdown-item" type="submit">Eliminar saltos de linea extra</button></li>
+            <li><button class="dropdown-item" type="submit">Limpiar caja de texto</button></li>
+        </ul>
+    </div>
+    </form>
+    @* fin form *@
+
+</div>
+
+<div>
+    <div class="contenedor3">
+        <div>
+            <div class="form-floating">
+                <textarea class="form-control" placeholder="Resultado" id="floatingTextarea">@ViewData["Resultado"]</textarea>
+                <label for="floatingTextarea">Resultado</label>
+            </div>
+        </div>
+    </div>
+
+</div>
+

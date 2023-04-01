@@ -1,0 +1,152 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100vh;
+}
+
+body {
+    margin-left: 0;
+    margin-bottom: 10vh;
+}
+
+.parrafo {
+    text-align: justify;
+}
+
+.texto {
+    display: inline-block;
+}
+
+    .texto h1 {
+        color: black;
+        overflow: hidden;
+        border-right: 0.1rem solid black;
+        white-space: nowrap;
+        animation: typing 1.5s steps(20, end) forwards, blinking 1s infinite;
+    }
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blinking {
+    from {
+        border-color: transparent;
+    }
+
+    to {
+        border-color: black;
+    }
+}
+
+.contenedor1 {
+    padding: 1rem;
+    width: 100vh;
+}
+
+.contenedor2 {
+    padding: 1rem;
+    width: 100vh;
+}
+
+.contenedor3 {
+    padding: 1rem;
+    width: 100vh;
+}
+
+.contenedorPadre {
+    display: block;
+    width: 100vh;
+}
+
+.nav-link {
+    margin-left: 0.5rem;
+}
+
+    .nav-link:hover {
+        font-weight: bold;
+    }
+
+form {
+    width: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 250px;
+}
+
+.form-floating > .form-control,
+.form-floating > .form-select {
+    /* position: ; */
+    height: 30vh;
+    resize: none;
+    width: 100vh;
+}
+
+textarea {
+    max-width: 100vh;
+}
+
+.form-floating:not(.form-control:disabled)::before {
+    width: 87vh;
+}
+
+@media (min-width: 600px) {
+    .container_propio {
+        display: flex;
+        justify-content: center;
+    }
+
+    .form-floating:not(.form-control:disabled)::before {
+        width: 87vh;
+    }
+}
+
+.input-group {
+    width: 100vh;
+}
+
+@media (max-width: 576px) {
+    .contenedor1,
+    .contenedor2,
+    .contenedor3 {
+        width: 100%;
+    }
+
+    .contenedorPadre {
+        width: 100%;
+    }
+
+    .form-floating > .form-control,
+    .form-floating > .form-select {
+        height: auto;
+        min-height: 100px;
+        max-height: 200px;
+    }
+
+    form {
+        min-width: auto;
+    }
+}
