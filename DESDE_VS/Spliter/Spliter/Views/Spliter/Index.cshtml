@@ -6,42 +6,47 @@
 
 
 <form method="POST">
-<div class="contenedorPadre">
+    <div class="contenedorPadre">
 
-    <div class="contenedor1" >
-        <div>
-            <div class="form-floating">
-                <textarea  value="@Model.contenido" asp-for="contenido" class="form-control" placeholder="Coloca acá tu texto" id="floatingTextarea">@Model.contenido</textarea>
-                <label asp-for="contenido" for="floatingTextarea" >Coloca tu texto acá</label>
-                <span asp-validation-for="contenido" class="text-danger"></span>
+        <div class="contenedor1">
+            <div>
+                <div class="form-floating">
+                    <textarea value="@Model.contenido" asp-for="contenido" class="form-control" placeholder="Coloca acá tu texto" id="floatingTextarea">@Model.contenido</textarea>
+                    <label asp-for="contenido" for="floatingTextarea">Coloca tu texto acá</label>
+                    <span asp-validation-for="contenido" class="text-danger"></span>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="contenedor1" >
-            <div class="input-group">
-                <span class="input-group-text">Cadena buscada y cadena de remplazo</span>
-                <input type="text" asp-for="cadenaBuscada" aria-label="Cadena buscada" class="form-control">
-                <input type="text" asp-for="cadenaRemplazo" aria-label="Cadena remplazo" class="form-control">
+
+        <div class="contenedor1">
+            <div class="input-group flex-nowrap">
+                <span class="input-group-text" id="addon-wrapping">Texto buscado</span>
+                <input type="text" asp-for="cadenaBuscada" class="form-control" placeholder="cadena buscada" aria-label="Cadena buscada">
             </div>
-    </div>
+        </div>
 
-    <div class="dropdown contenedor2">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Opciones
-        </button>
-        <ul class="dropdown-menu">
-            <li><button class="dropdown-item" type="submit" asp-action="eliminarBlanco">Eliminar espacios en blanco extra.</button></li>
-            <li><button class="dropdown-item" type="submit" asp-action="eliminarSalto">Eliminar saltos de linea extra</button></li>
-            <li><button class="dropdown-item" type="submit" asp-action="Reset_box" >Limpiar caja de texto</button></li>
+        <div class="contenedor1">
+            <div class="input-group flex-nowrap">
+                <span class="input-group-text" id="addon-wrapping">Texto remplazo</span>
+                <input type="text" asp-for="cadenaRemplazo" class="form-control" placeholder="cadena remplazo" aria-label="Cadena buscada">
+            </div>
+        </div>
+
+
+        <div class="dropdown contenedor2">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Opciones
+            </button>
+            <ul class="dropdown-menu">
+                <li><button class="dropdown-item" type="submit" asp-action="eliminarBlanco">Eliminar espacios en blanco extra.</button></li>
+                <li><button class="dropdown-item" type="submit" asp-action="eliminarSalto">Eliminar saltos de linea extra</button></li>
+                <li><button class="dropdown-item" type="submit" asp-action="Reset_box">Limpiar caja de texto</button></li>
                 <li><button class="dropdown-item" type="submit" asp-action="RemplazarContenido">Remplazar contenido</button></li>
-        </ul>
+            </ul>
+        </div>
+
     </div>
-
-    
-    
-
-</div>
 </form>
 
 <div>
