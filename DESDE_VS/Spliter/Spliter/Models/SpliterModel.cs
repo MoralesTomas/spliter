@@ -12,21 +12,40 @@ public class spliter
     {
 
     }
-    public string contenido { get; set; }
+    public string? contenido { get; set; }
+    public int Opcion { get; set; }     //propiedad que nos ayudara a distinguir la opcion que deseemos ejecutar.
 
     public string? cadenaBuscada { get; set; }
 
     public string? cadenaRemplazo { get; set; }
+    public string? separador { get; set; }
+
+    public string[]? contenidoSpliter { get; set; }
+
+    #region explicacion de la propiedad Opcion
+    /*
+     *Esto nos ayudara a manejar mejor las opciones del usuario
+     *
+     *1->Limpiar caja de entrada
+     *2->Eliminar espacios en blanco
+     *3->Eliminar saltos de linea
+     *4->Remplazar contenido.
+     *
+     */
+    #endregion
 
 
-    public string[] splitear(string separador)
+    public void splitear()
     {
+        try
+        {
+            this.contenidoSpliter = this.contenido.Split(separador);
 
-        this.contenido = Regex.Replace(this.contenido, @"\s+", " ").Trim();
-
-        this.contenido = Regex.Replace(this.contenido, @"\n+", "\n").Trim();
-
-        return contenido.Split(separador);
+        }catch( Exception ex)
+        {
+            string[] arreglo = { "No se pudo realizar el analisis" };
+            this.contenidoSpliter =  arreglo;
+        }
     }
 
     public string eliminarBlanco()

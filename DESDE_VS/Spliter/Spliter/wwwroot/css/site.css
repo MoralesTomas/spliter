@@ -8,13 +8,7 @@ html {
     }
 }
 
-.btn:focus,
-.btn:active:focus,
-.btn-link.nav-link:focus,
-.form-control:focus,
-.form-check-input:focus {
-    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.10rem #258cfb;
-}
+
 
 html {
     position: relative;
@@ -82,6 +76,7 @@ body {
     width: 80vw;
 }
 
+
 .nav-link {
     margin-left: 0.5rem;
 }
@@ -110,9 +105,36 @@ textarea {
     padding: 1rem;
 }
 
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.10rem white, 0 0 0 0.25rem #258cfb;
+}
 
 .form-floating:not(.form-control:disabled)::before {
     width: 78vw;
+}
+
+
+.input-group {
+    width: 80vw;
+}
+
+
+.form-floating > .form-control:focus, .form-floating > .form-control:not(:placeholder-shown) {
+    padding-top: 2.5rem;
+    padding-bottom: 1rem;
+}
+
+
+.form-select {
+    width: 80vw;
+}
+
+.table {
+    width: 80vw;
 }
 
 
@@ -127,12 +149,9 @@ textarea {
     }
 }
 
-.input-group {
+figure{
     width: 80vw;
 }
-
-
-.form-floating > .form-control:focus, .form-floating > .form-control:not(:placeholder-shown) {
-    padding-top: 2.5rem;
-    padding-bottom: 1rem;
+img{
+    width: 80vw;
 }

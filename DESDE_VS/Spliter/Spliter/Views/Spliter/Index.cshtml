@@ -11,13 +11,19 @@
         <div class="contenedor1">
             <div>
                 <div class="form-floating">
-                    <textarea value="@Model.contenido" asp-for="contenido" class="form-control" placeholder="Coloca acá tu texto" id="floatingTextarea">@Model.contenido</textarea>
+                    <textarea asp-for="contenido" class="form-control" placeholder="Coloca acá tu texto" id="floatingTextarea">@Model.contenido</textarea>
                     <label asp-for="contenido" for="floatingTextarea">Coloca tu texto acá</label>
                     <span asp-validation-for="contenido" class="text-danger"></span>
                 </div>
             </div>
         </div>
 
+        <div class="contenedor1">
+            <div class="input-group flex-nowrap">
+                <span class="input-group-text" id="addon-wrapping">Seperador</span>
+                <input type="text" asp-for="separador" class="form-control" placeholder="elemento separador" aria-label="elemento separador">
+            </div>
+        </div>
 
         <div class="contenedor1">
             <div class="input-group flex-nowrap">
@@ -29,25 +35,32 @@
         <div class="contenedor1">
             <div class="input-group flex-nowrap">
                 <span class="input-group-text" id="addon-wrapping">Texto remplazo</span>
-                <input type="text" asp-for="cadenaRemplazo" class="form-control" placeholder="cadena remplazo" aria-label="Cadena buscada">
+                <input type="text" asp-for="cadenaRemplazo" class="form-control" placeholder="cadena remplazo" aria-label="Cadena remplazo">
             </div>
         </div>
 
 
-        <div class="dropdown contenedor2">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Opciones
-            </button>
-            <ul class="dropdown-menu">
-                <li><button class="dropdown-item" type="submit" asp-action="eliminarBlanco">Eliminar espacios en blanco extra.</button></li>
-                <li><button class="dropdown-item" type="submit" asp-action="eliminarSalto">Eliminar saltos de linea extra</button></li>
-                <li><button class="dropdown-item" type="submit" asp-action="Reset_box">Limpiar caja de texto</button></li>
-                <li><button class="dropdown-item" type="submit" asp-action="RemplazarContenido">Remplazar contenido</button></li>
-            </ul>
-        </div>
+        <div class="contenedor2">
 
+            <select class="form-select " aria-label="Default select example" asp-for="Opcion">
+                <option selected>Selecciona una opcion</option>
+
+                <option value="1">Limpiar caja de entrada</option>
+                <option value="2">Eliminar espacios en blanco</option>
+                <option value="3">Eliminar saltos de linea</option>
+                <option value="4">Remplazar contenido.</option>
+                <option value="5">Aplicar separador en el texto.</option>
+
+            </select>
+
+            <br />
+
+            <button type="submit" asp-action="Evaluar" class="btn btn-success">Ejecutar</button>
+
+        </div>
     </div>
 </form>
+
 
 <div>
     <div class="contenedor3">
@@ -60,3 +73,75 @@
     </div>
 </div>
 
+
+@if (Model.contenidoSpliter != null)
+{
+    <div class="contenedor1">
+        <table class="table table-secondary table-hover" id="tablaResultante">
+            <thead>
+                <tr>
+                    <th scope="col"># elemento</th>
+                    <th scope="col">Contenido</th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+                @for (int i = 0; i < Model.contenidoSpliter.Length; i++)
+                {
+                    if (@Model.contenidoSpliter[i] != "")
+                    {
+                        int contador = i + 1;
+                        <tr>
+                            <th scope="row"> @contador </th>
+                            <td> @Model.contenidoSpliter[ i ] </td>
+                        </tr>
+                    }
+                }
+
+            </tbody>
+        </table>
+
+        <br />
+        <button type="button" class="btn btn-success" onclick="descargarTabla()">Descargar tabla (xlsx)</button>
+        <br />
+        
+
+    </div>
+}
+
+
+@*Script para poder actualizar el area de contenido*@
+<script>
+    // Obtener el elemento del textarea
+    var textarea = document.getElementById("floatingTextarea");
+
+    // Función para actualizar el valor del textarea
+    function updateTextArea() {
+
+        var contenido = "@Model.contenido";
+
+        textarea.value = contenido;
+        console.log(@Model.contenido );
+    }
+
+    // Llamar la función al cargar la página
+    updateTextArea();
+</script>
+
+@*Script para descargar la tabla en formato xlsx*@
+
+<!-- Agrega la siguiente biblioteca SheetJS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.8/xlsx.full.min.js"></script>
+
+<script>
+    function descargarTabla() {
+        const nombreArchivo = "tablaResultante.xlsx";
+        const tabla = document.getElementById("tablaResultante");
+        const libro = XLSX.utils.table_to_book(tabla, { sheet: "Sheet1" });
+        XLSX.writeFile(libro, nombreArchivo);
+    }
+</script>
+
+
+@*Script para descargar la tabla en formato pdf*@
