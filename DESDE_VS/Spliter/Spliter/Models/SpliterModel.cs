@@ -39,7 +39,12 @@ public class spliter
     {
         try
         {
-            this.contenidoSpliter = this.contenido.Split(separador);
+            if( this.separador == null )
+            {
+                separador = " ";
+            }
+
+            this.contenidoSpliter = this.contenido.Split(this.separador);
 
         }catch( Exception ex)
         {
